@@ -14,14 +14,33 @@ function add_problem($caption,$file){
         move_uploaded_file($tmp_name,"$up_dir/$moto_name");
     }
 
-    $sxml = simplexml_load_file("$up_dir/$moto_name");
-    $sel = $sxml->ProblemInfo->SelectCost;
-    $swp = $xml->ProblemInfo->SwapCost;
-    $max_sel = $xml->ProblemInfo->MaxSelections;
+    $dom = new DOMDocument('1.0','UTF-8');
+    $dom->preserveWhiteSpace = false;
+    $dom->formatOutput = true;
+    $dom->load("$up_dir/$moto_name");
 
-    $query = "insert into problem (caption,x,y,sel,swa,max_sel,path) values (?,?,?,?,?,?)";
+    $x = -1;
+    $y = -1;
+
+    $swp = $dom->getElementsByTagName("SwapCost")->item(0)->nodeValue;
+    $sel = $dom->getElementsByTagName("SelectCost")->item(0)->nodeValue;
+    $max_sel = $dom->getElementsByTagName("MaxSelections")->item(0)->nodeValue;
+
+    foreach($dom->getElementsByTagName("X") as $kore){
+       $temp = $kore->nodeValue;
+       if($temp>=$x) $x=$temp;
+    }
+    $x = $x + 1;
+
+    foreach($dom->getElementsByTagName("Y") as $kore){
+       $temp = $kore->nodeValue;
+       if($temp>=$y) $y=$temp;
+    }
+    $y = $y + 1;
+
+    $query = "insert into problem (caption,x,y,sel,swp,max_sel,path) values (?,?,?,?,?,?)";
     $db->prepare($query);
-    $db->bind_param('siiiiis',$caption,$x,$y,$sel,$swa,$max_sel,$moto_name);
+    $db->bind_param('siiiiis',$caption,$x,$y,$sel,$swp,$max_sel,$moto_name);
     $result=$db->execute();
     if(!$result) die("問題の追加に失敗しました");
     
