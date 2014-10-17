@@ -10,7 +10,7 @@
 <h1>Problem(25) Uploader</h1>
 <div class="menus">
 <div class="menu_on">
- <div class="menuitem" onclick="doToggleClassName(getParentObj(this),'menu_on','menu_off')">旅行</div>
+ <div class="menuitem" onclick="doToggleClassName(getParentObj(this),'menu_on','menu_off')">メニュー</div>
  <ul>
   <li><a href="add.html">追加</a></li>
  </ul>

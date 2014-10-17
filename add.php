@@ -9,8 +9,8 @@ function add_problem($caption,$file){
     global $db;
     $up_dir="problems";
     if($file["prob"]["error"]==UPLOAD_ERR_OK){
-        $moto_name=$file["prob"]["name"][$key];
-        $tmp_name=$file["prob"]["tmp_name"][$key];
+        $moto_name=$file["prob"]["name"];
+        $tmp_name=$file["prob"]["tmp_name"];
         move_uploaded_file($tmp_name,"$up_dir/$moto_name");
     }
 
@@ -38,7 +38,7 @@ function add_problem($caption,$file){
     }
     $y = $y + 1;
 
-    $query = "insert into problem (caption,x,y,sel,swp,max_sel,path) values (?,?,?,?,?,?)";
+    $query = "insert into problem (caption,x,y,sel,swp,max_sel,path) values (?,?,?,?,?,?,?)";
     $db->prepare($query);
     $db->bind_param('siiiiis',$caption,$x,$y,$sel,$swp,$max_sel,$moto_name);
     $result=$db->execute();
