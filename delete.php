@@ -14,7 +14,7 @@ function del_prob($ID){
 
     $result->bind_result($filename);
     $result->fetch();
-    unlink("$up_dir/$filename")
+    unlink("$up_dir/$filename");
 
     $query = "delete from problem where ID=?";
     $db->prepare($query);
