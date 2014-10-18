@@ -11,7 +11,7 @@ function main(){
     while($result->fetch()){
         echo "<tr>";
         echo "<th>".$ID."</th>";
-        echo "<th><a href=procon.php?ID=".$ID.">".$caption."</a></th>";
+        echo "<th><a href=procon.php?probID=".$ID.">".$caption."</a></th>";
         echo "<th>".$x."x".$y."</th>";
         echo "<th>".$sel."</th>";
         echo "<th>".$swp."</th>";
