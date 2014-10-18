@@ -3,12 +3,36 @@
 <head>
 <title>問題の追加</title>
 <link rel="stylesheet" href="resources/main.css" type="text/css">
+<script type="text/javascript"src="resources/add.js"></script>
 </head>
-<body>
+<body onload="Change1()">
 <p>問題(prob25)追加</p>
 <form action="add.php" method="POST" enctype="multipart/form-data">
-<p>問題名:<input type="text" name="caption" size="20" required></p>
-<p>ファイル選択<input type="file" name="prob" required></p>
+<table>
+<tr>
+<th>ファイル種類</th>
+<td>
+<label><input type="radio" name="proposal" value="ppm" onclick="Change1();" checked="checked" />PPMとCSV</label>
+<label><input type="radio" name="proposal" value="prob25" onclick="Change1();"/>Prob25</label>
+</td>
+</tr>
+	<!-- 表示非表示切り替え -->
+	<tr id="firstBox">
+		<th>PPMファイル</th>
+		<td><input type="file" name="ppm"></td>
+	</tr>
+        <tr id="firstBox2">
+                <th>CSVファイル</th>
+                <td><input type="file" name="csv"></td>
+        </tr>
+	
+	<!-- 表示非表示切り替え -->
+	<tr id="secondBox">
+		<th>Prob25ファイル</th>
+		<td><input type="file" name="prob25"></td>
+	</tr>
+
+</table>
 <p><input type="submit" value="送信"></p>
 </form>
 <a href="/travel_album">メインへ</a>

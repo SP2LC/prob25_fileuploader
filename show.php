@@ -10,7 +10,7 @@ function main(){
     $result->bind_result($ID,$caption,$x,$y,$sel,$swp,$max_sel,$path);
     while($result->fetch()){
         echo "<tr>";
-        echo "<th>".$caption."</th>";
+        echo "<th><a href=get_prob.php?ID=".$ID.">".$caption."</a></th>";
         echo "<th>".$x."x".$y."</th>";
         echo "<th>".$sel."</th>";
         echo "<th>".$swp."</th>";
