@@ -9,7 +9,7 @@ del_prob($ID);
 function del_prob($ID){
     global $db;
     $up_dir="problems";
-    $query = "select path from problem where ID=?";
+    $query = "select file_path from problem where ID=?";
     $db->prepare($query);
     $db->bind_param('i',$ID);
     $result=$db->execute();

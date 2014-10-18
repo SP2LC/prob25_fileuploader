@@ -19,8 +19,9 @@
 </div>
 <div class="list">
 問題一覧
-<table border=6 width=500 align=center>
+<table border=6 width=800 align=center>
 <tr>
+<th>問題ID</th>
 <th>画像名</th>
 <th>分割数</th>
 <th>選択コスト</th>
